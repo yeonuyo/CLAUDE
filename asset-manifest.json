@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/CLAUDE/static/css/main.b73a1629.css",
+    "main.js": "/CLAUDE/static/js/main.f296884f.js",
+    "index.html": "/CLAUDE/index.html",
+    "main.b73a1629.css.map": "/CLAUDE/static/css/main.b73a1629.css.map",
+    "main.f296884f.js.map": "/CLAUDE/static/js/main.f296884f.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.b73a1629.css",
+    "static/js/main.f296884f.js"
+  ]
+}
