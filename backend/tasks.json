@@ -1,0 +1,80 @@
+[
+  {
+    "id": 1,
+    "title": "기말고사 전까지 주가가 올라갈 주식 종목 선정하기",
+    "description": "",
+    "date": "2025-05-31",
+    "time": "",
+    "priority": "medium",
+    "points": "30점",
+    "submission_location": "",
+    "completed": false,
+    "notifications_enabled": true,
+    "created_at": "2025-05-31 16:43:29"
+  },
+  {
+    "id": 2,
+    "title": "실습 과제",
+    "description": "블록체인 실습 과제 6월 16일 \n\n과제 작성 순서\n\n블록체인 기술을 활용할 수 있는 분야를 자유롭게 선택하세요.\n\n제너시스 블록을 자유롭게 생성해주세요.\n\n거래내역을 3가지 정해주세요.\n\n예시코드를 참고하여 자신이 선택한 분야의 블록체인을 생성하세요.\n\nhttps://colab.research.google.com/drive/1OEM1V2ueBlxDJWO14b3aW4j2KgFOSRE9#scrollTo=FGPvVRUfTNDo\n\n실행 결과를 화면출력한 다음, 해당 출력 화면을 캡쳐 및 저장하여\n\nLMS(ecampus)에 6월16일 21:00시까지 제출하세요.\n\n과제점수: 2점 만점, 늦게 제출하면 1점, 미제출하면 0점",
+    "date": "2025-06-16",
+    "time": "21:00",
+    "priority": "low",
+    "points": "2점",
+    "submission_location": "",
+    "completed": false,
+    "notifications_enabled": true,
+    "created_at": "2025-05-31 17:04:17"
+  },
+  {
+    "id": 3,
+    "title": "공연관람 레포트",
+    "description": "공연관람 레포트\n\n-연극 관람후 작품분석 레포트 1장\n\n6월 16일까지 제출.\n\n 연극관람 레포트는 A4 1장에 다음과 같은 형식으로 작성해야 합니다.(줄간격과 글자 크기는 본인이 결정하세요. 하지만 반드시 1장 내로 써야 합니다.)\n\n e-campus에 제출하세요. (이 메일로 제출하면 제출했는지 안했는지 잘 못 파악될 여지가 있습니다.)\n\n 다음의 번호 및 번호 옆에 써있는 것들을 제목삼아서 반드시 함께 명기하세요\n\n레포트는 이렇게 번호와 함께 각 항목이 분리되게 작성해야 합니다.\n\n우선 학과, 학번 이름을 쓰세요\n\n그리고 다음의 항목을 작성합니다.\n\n점수를 잘 받기 위해서는 다음의 내용을 좋은 글쓰기를 통해서 정리해봅시다.\n\n개괄식으로 쓰기 보다는 완성된 글쓰기를 시도하세요.\n",
+    "date": "2025-06-15",
+    "time": "",
+    "priority": "medium",
+    "points": "",
+    "submission_location": "",
+    "completed": false,
+    "notifications_enabled": true,
+    "created_at": "2025-05-31 17:06:54"
+  },
+  {
+    "id": 5,
+    "title": "실습 과제",
+    "description": "",
+    "date": "2025-06-01",
+    "time": "",
+    "priority": "medium",
+    "points": "",
+    "submission_location": "",
+    "completed": false,
+    "notifications_enabled": true,
+    "created_at": "2025-05-31 17:31:11"
+  },
+  {
+    "id": 6,
+    "title": "개발 과제",
+    "description": "시스템 개발 과제\n\nReact로 만든 과제 일정 캘린더 시스템에 아래 3가지 기능을 추가해달라.\n1. 사용자가 새로운 과제를 추가하면, 마감 하루 전에 자동으로 알림이 예약되도록 설정하라.\n2. 알림이 실제로 오는지 바로 확인할 수 있는 테스트 기능 추가\n→ 개발/테스트 용도로 알림이 즉시 뜨는 기능이 있으면 좋겠다. 예를 들어 testNotification() 함수를 실행하거나, UI 버튼을 눌러서 실제 알림을 미리 확인할 수 있도록 해달라.\n3. 과제별 알림 개별 설정 기능 추가\n→ 사용자가 각 과제마다 알림을 받을지 말지 선택할 수 있게 해달라.\n→ 기본값은 ‘알림 ON’이며, 사용자가 직접 특정 과제만 ‘알림 OFF’로 바꿀 수 있어야 한다.\n→ 과제 카드나 수정창 등에 알림 ON/OFF 토글 버튼이 있어야 한다.\n\n",
+    "date": "2025-05-31",
+    "time": "",
+    "priority": "low",
+    "points": "",
+    "submission_location": "",
+    "completed": false,
+    "notifications_enabled": true,
+    "created_at": "2025-05-31 18:06:32"
+  },
+  {
+    "id": 7,
+    "title": "공연관람 레포트",
+    "description": "공연관람 레포트\n\n-연극 관람후 작품분석 레포트 1장\n\n6월 16일까지 제출.\n\n 연극관람 레포트는 A4 1장에 다음과 같은 형식으로 작성해야 합니다.(줄간격과 글자 크기는 본인이 결정하세요. 하지만 반드시 1장 내로 써야 합니다.)\n\n e-campus에 제출하세요. (이 메일로 제출하면 제출했는지 안했는지 잘 못 파악될 여지가 있습니다.)\n\n 다음의 번호 및 번호 옆에 써있는 것들을 제목삼아서 반드시 함께 명기하세요\n\n레포트는 이렇게 번호와 함께 각 항목이 분리되게 작성해야 합니다.\n\n우선 학과, 학번 이름을 쓰세요\n\n그리고 다음의 항목을 작성합니다.\n\n점수를 잘 받기 위해서는 다음의 내용을 좋은 글쓰기를 통해서 정리해봅시다.\n\n개괄식으로 쓰기 보다는 완성된 글쓰기를 시도하세요.",
+    "date": "2025-06-16",
+    "time": "",
+    "priority": "medium",
+    "points": "",
+    "submission_location": "",
+    "completed": false,
+    "notifications_enabled": true,
+    "created_at": "2025-05-31 19:45:54"
+  }
+]
