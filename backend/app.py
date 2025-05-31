@@ -26,7 +26,6 @@ def get_next_id(tasks):
     return max(task['id'] for task in tasks) + 1
 
 def parse_task_from_text(text):
-    """자연어 텍스트에서 과제 정보를 추출합니다."""
     result = {
         'title': '',
         'description': text,
@@ -36,8 +35,7 @@ def parse_task_from_text(text):
         'points': '',
         'submission_location': ''
     }
-    
-    # 과제명 추출 (제목, 과제명, 레포트 등의 키워드 활용)
+
     title_patterns = [
         r'과제\s*[:：]\s*(.+?)(?=\n|\r|$)',
         r'제목\s*[:：]\s*(.+?)(?=\n|\r|$)',
@@ -48,14 +46,13 @@ def parse_task_from_text(text):
         r'(\w+\s*레포트)',
         r'(\w+\s*프로젝트)'
     ]
-    
+
     for pattern in title_patterns:
         match = re.search(pattern, text, re.IGNORECASE)
         if match:
             result['title'] = match.group(1).strip()
             break
-    
-    # 마감일 추출 (다양한 날짜 형식 지원)
+
     date_patterns = [
         r'마감일?\s*[:：]\s*(\d{4})[.\-/년]\s*(\d{1,2})[.\-/월]\s*(\d{1,2})[일]?',
         r'제출일?\s*[:：]\s*(\d{4})[.\-/년]\s*(\d{1,2})[.\-/월]\s*(\d{1,2})[일]?',
@@ -64,7 +61,7 @@ def parse_task_from_text(text):
         r'(\d{1,2})[.\-/월]\s*(\d{1,2})[일]\s*까지',
         r'(\d{1,2})[월]\s*(\d{1,2})[일]'
     ]
-    
+
     for pattern in date_patterns:
         match = re.search(pattern, text, re.IGNORECASE)
         if match:
@@ -77,8 +74,7 @@ def parse_task_from_text(text):
                 current_year = datetime.now().year
                 result['date'] = f"{current_year}-{month.zfill(2)}-{day.zfill(2)}"
             break
-    
-    # 시간 추출
+
     time_patterns = [
         r'(\d{1,2})\s*[:：시]\s*(\d{2})\s*분?까지',
         r'(\d{1,2})\s*[:：시]\s*(\d{2})',
@@ -86,7 +82,7 @@ def parse_task_from_text(text):
         r'오전\s*(\d{1,2})\s*[:：시]',
         r'(\d{1,2})\s*시\s*까지'
     ]
-    
+
     for pattern in time_patterns:
         match = re.search(pattern, text, re.IGNORECASE)
         if match:
@@ -98,22 +94,20 @@ def parse_task_from_text(text):
                 hour = groups[0]
                 result['time'] = f"{hour.zfill(2)}:00"
             break
-    
-    # 배점 추출
+
     points_patterns = [
         r'배점\s*[:：]\s*(\d+)\s*점',
         r'점수\s*[:：]\s*(\d+)\s*점',
         r'(\d+)\s*점\s*만점',
         r'총\s*(\d+)\s*점'
     ]
-    
+
     for pattern in points_patterns:
         match = re.search(pattern, text, re.IGNORECASE)
         if match:
             result['points'] = match.group(1) + '점'
             break
-    
-    # 제출장소 추출
+
     location_patterns = [
         r'제출\s*장소\s*[:：]\s*(.+?)(?=\n|\r|$)',
         r'제출\s*방법\s*[:：]\s*(.+?)(?=\n|\r|$)',
@@ -123,7 +117,7 @@ def parse_task_from_text(text):
         r'오프라인\s*제출',
         r'온라인\s*제출'
     ]
-    
+
     for pattern in location_patterns:
         match = re.search(pattern, text, re.IGNORECASE)
         if match:
@@ -132,18 +126,21 @@ def parse_task_from_text(text):
             else:
                 result['submission_location'] = match.group(0).strip()
             break
-    
-    # 우선순위 결정 (키워드 기반)
+
     high_priority_keywords = ['중요', '시험', '발표', '프로젝트', '최종']
     low_priority_keywords = ['선택', '추가', '보너스']
-    
+
     text_lower = text.lower()
     if any(keyword in text_lower for keyword in high_priority_keywords):
         result['priority'] = 'high'
     elif any(keyword in text_lower for keyword in low_priority_keywords):
         result['priority'] = 'low'
-    
+
     return result
+
+@app.route('/')
+def hello():
+    return "배포 성공! 👏 여긴 Flask 백엔드야"
 
 @app.route('/api/tasks', methods=['GET'])
 def get_tasks():
@@ -153,10 +150,9 @@ def get_tasks():
 @app.route('/api/tasks', methods=['POST'])
 def create_task():
     data = request.get_json()
-    
     if not data.get('title') or not data.get('date'):
         return jsonify({'error': '제목과 날짜는 필수입니다.'}), 400
-    
+
     tasks = load_tasks()
     new_task = {
         'id': get_next_id(tasks),
@@ -171,7 +167,7 @@ def create_task():
         'notifications_enabled': data.get('notifications_enabled', True),
         'created_at': datetime.now().strftime('%Y-%m-%d %H:%M:%S')
     }
-    
+
     tasks.append(new_task)
     save_tasks(tasks)
     return jsonify(new_task), 201
@@ -180,11 +176,10 @@ def create_task():
 def update_task(task_id):
     data = request.get_json()
     tasks = load_tasks()
-    
     task = next((t for t in tasks if t['id'] == task_id), None)
     if not task:
         return jsonify({'error': '과제를 찾을 수 없습니다.'}), 404
-    
+
     task.update({
         'title': data.get('title', task['title']),
         'description': data.get('description', task['description']),
@@ -196,7 +191,7 @@ def update_task(task_id):
         'completed': data.get('completed', task['completed']),
         'notifications_enabled': data.get('notifications_enabled', task.get('notifications_enabled', True))
     })
-    
+
     save_tasks(tasks)
     return jsonify(task)
 
@@ -211,10 +206,9 @@ def delete_task(task_id):
 def toggle_task(task_id):
     tasks = load_tasks()
     task = next((t for t in tasks if t['id'] == task_id), None)
-    
     if not task:
         return jsonify({'error': '과제를 찾을 수 없습니다.'}), 404
-    
+
     task['completed'] = not task['completed']
     save_tasks(tasks)
     return jsonify(task)
@@ -228,20 +222,17 @@ def get_tasks_by_date(date):
 @app.route('/api/chatbot/parse', methods=['POST'])
 def parse_assignment_text():
     data = request.get_json()
-    
     if not data.get('text'):
         return jsonify({'error': '텍스트가 필요합니다.'}), 400
-    
+
     parsed_data = parse_task_from_text(data['text'])
-    
-    # 필수 정보가 누락된 경우 처리
+
     if not parsed_data['title']:
         parsed_data['title'] = '제목을 입력해주세요'
-    
+
     if not parsed_data['date']:
-        # 기본값으로 오늘 날짜 설정
         parsed_data['date'] = datetime.now().strftime('%Y-%m-%d')
-    
+
     return jsonify({
         'success': True,
         'parsed_data': parsed_data,
