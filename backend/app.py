@@ -219,7 +219,7 @@ def get_tasks_by_date(date):
     filtered_tasks = [task for task in tasks if task['date'] == date]
     return jsonify(filtered_tasks)
 
-@app.route('/api/chatbot/parse', methods=['POST'])
+@app.route('/api/chatbot', methods=['POST'])
 def parse_assignment_text():
     data = request.get_json()
     if not data.get('text'):
